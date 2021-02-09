@@ -1,0 +1,44 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/edit.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+
+<div class="container">
+    <div class="panel panel-default">
+   
+    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+        <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+    
+            Edition des Livres		
+    </h1></div>
+    <div class="panel-body" *ngIf="mlivre">
+    
+    
+      <form #f="ngForm" (ngSubmit)="updatelivre(f.value)">
+        <div class="form-group">
+        <label class="control-label text-danger">Title</label>
+        <input class="form-control" type="text" name="title" ngModel [(ngModel)]="mlivre.title">
+        </div>
+        <div class="form-group">
+          <label class="control-label text-danger">Author</label>
+          <input class="form-control" type="text" name="author" ngModel [(ngModel)]="mlivre.author">
+          </div>  <div class="form-group">
+            <label class="control-label text-danger">Quantity</label>
+            <input class="form-control" type="text" name="quantity" ngModel [(ngModel)]="mlivre.quantity">
+            </div>
+          
+            <div class="form-group">
+                <label class="control-label text-danger">Price</label>
+                <input class="form-control" type="text" name="price" ngModel [(ngModel)]="mlivre.price">
+                </div>
+                
+
+          
+            <button class="btn btn-success" type="submit">Enregistrer</button>
+        </form>
+    </div>
+    
+    </div>
+    
+    
+    </div>

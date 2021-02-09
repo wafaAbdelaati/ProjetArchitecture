@@ -1,0 +1,143 @@
+version: "3.6"
+services:
+  DB_Livres:
+    container_name: DB_Livres
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      mysubnet:
+        aliases:
+        - BDLivres.aliases
+  DB_Commandes:
+    container_name: DB_Commandes
+    image: mongo
+    restart: always
+    ports:
+      - 27018:27017
+    networks:
+      mysubnet:
+        aliases:
+        - BDCommandes.aliases
+  DB_Category:
+    container_name: DB_Category
+    image: mongo
+    restart: always
+    ports:
+      - 27019:27017
+    networks:
+      mysubnet:
+        aliases:
+        - BDCategory.aliases
+  DB_Clients:
+    container_name: DB_Clients
+    image: mongo
+    restart: always
+    ports:
+      - 27020:27017
+    networks:
+      mysubnet:
+        aliases:
+        - BDClients.aliases
+  MS_Eureka:
+    container_name: MS_Eureka
+    build: ./MS_Eureka
+    image: ms_eureka
+    ports:
+     - 8761:8761
+    environment:
+     - SERVER_PORT=8761
+    networks:
+      mysubnet:
+        aliases:
+        - MSEureka.aliases
+  MS_Commandes:
+    container_name: MS_Commandes
+    build: ./MS_Commande
+    image: ms_commandes
+    ports:
+     - 8181:8181
+    environment:
+     - SPRING_DATA_MONGODB_HOST=BDCommandes.aliases
+     - SPRING_DATA_MONGODB_PORT=27017
+     - SPRING_DATA_MONGODB_DATABASE=produits
+     - SERVER_PORT=8181
+     - eureka.client.serviceUrl.defaultZone=http://MSEureka.aliases:8761/eureka/
+    networks:
+      mysubnet:
+        aliases:
+        - MSCommandes.aliases
+    depends_on:
+     - DB_Commandes 
+  MS_Zuul:
+    container_name: MS_Zuul
+    build: ./MS_Zuul
+    image: ms_zuul
+    ports:
+     - 8888:8888
+    environment:
+     - eureka.client.serviceUrl.defaultZone=http://MSEureka.aliases:8761/eureka/
+     - SERVER_PORT=8888
+    networks:
+      mysubnet:
+        aliases:
+        - MSZuul.aliases     
+  MS_Livres:
+    container_name: MS_Livres
+    build: ./MS_livres
+    image: ms_livres
+    ports:
+     - 8700:8700
+    environment:
+     - PORT=8700
+     - EUREKA_HOST=MSEureka.aliases
+     - EUREKA_PORT=8761
+     - DATABASE=BDLivres.aliases
+     - HOSTNAME=MSLivres.aliases
+     - ADRESSE=MSLivres.aliases
+     - DBPORT=27017
+    networks:
+      mysubnet:
+        aliases:
+        - MSLivres.aliases
+    depends_on:
+     - DB_Livres
+  MS_Category:
+    container_name: MS_category
+    build: ./MS_category
+    image: ms_category
+    ports:
+     - 5003:5003
+    environment:
+     - HOST_PORT=5003
+     - EUREKA_HOST=MSEureka.aliases
+     - EUREKA_PORT=8761
+     - DATABASE=BDCategory.aliases
+     - HOSTNAME=MSCategory.aliases
+     - ADRESSE=MSLivres.aliases
+     - DBPORT=27017
+    networks:
+      mysubnet:
+        aliases:
+        - MSCategory.aliases
+    depends_on:
+     - DB_Category
+  MS_Clients:
+    container_name: MS_Clients
+    build: ./MS_Client
+    image: ms_clients
+    ports:
+     - 5010:5000
+    environment:
+     - HOST=BDClients.aliases
+     - PORT=27017
+    networks:
+      mysubnet:
+        aliases:
+        - MSClients.aliases
+    depends_on:
+     - DB_Clients  
+networks:
+  mysubnet:
+    external: true

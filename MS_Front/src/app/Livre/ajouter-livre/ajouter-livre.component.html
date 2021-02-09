@@ -1,0 +1,65 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/novc.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+<div class="container">
+    <div class="col-md-9 colsm-6 col-xs-12">
+    <div class="panel panel-default">
+        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+            <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+        
+       Nouvelle Livre		
+        </h1></div>
+    <div class="panel-body" *ngIf="mode==1">
+    <form #f="ngForm" (ngSubmit)="Onsavelivre(f.value)">
+    <div class="form-group">
+    <label class="control-label text-danger">Title</label>
+    <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="title" ngModel>
+    </div>
+    <div class="form-group">
+        <label class="control-label text-danger">Author</label>
+        <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="author" ngModel>
+        </div>
+        <div class="form-group">
+            <label class="control-label text-danger">Price</label>
+            <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="price" ngModel>
+            </div>
+            <div class="form-group">
+                <label class="control-label text-danger">Quantity</label>
+                <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="quantity" ngModel>
+                </div>
+   
+        <button class="btn btn-success" type="submit">Enregistrer</button>
+    </form>
+    </div>
+
+
+
+
+
+
+    <div class="panel-body" *ngIf="mode==2">
+      <div class="form-group">
+      <label>Title: </label>
+      <label>{{l.title}}</label>
+      </div>
+      <div class="form-group">
+        <label>Author: </label>
+        <label>{{l.author}}</label>
+        </div>
+        <div class="form-group">
+            <label>Price: </label>
+            <label>{{l.price}}</label>
+            </div>
+            <div class="form-group">
+                <label>Quantity: </label>
+                <label>{{l.quantity}}</label>
+                </div>
+      
+          <button class="btn btn-success" (click)="Onewlivre()">Ajouter</button>
+      </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>

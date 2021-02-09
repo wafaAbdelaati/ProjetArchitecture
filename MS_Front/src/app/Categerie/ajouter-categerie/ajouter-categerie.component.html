@@ -1,0 +1,52 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/cate.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+<div class="container">
+    <div class="col-md-9 colsm-6 col-xs-12">
+    <div class="panel panel-default">
+        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+            <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+        
+       Nouvelle Categorie		
+        </h1></div>
+    <div class="panel-body" *ngIf="mode==1">
+    <form #f="ngForm" (ngSubmit)="Onsavecat(f.value)">
+    <div class="form-group">
+    <label class="control-label text-danger">Type</label>
+    <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="type" ngModel>
+    </div>
+    <div class="form-group">
+        <label class="control-label text-danger">Description</label>
+        <input class="form-control" class="p-3 mb-2 bg-dark text-white" type="text" name="description" ngModel>
+        </div>
+       
+            
+   
+        <button class="btn btn-success" type="submit">Enregistrer</button>
+    </form>
+    </div>
+
+
+
+
+
+
+    <div class="panel-body" *ngIf="mode==2">
+      <div class="form-group">
+      <label>Type: </label>
+      <label>{{ct.type}}</label>
+      </div>
+      <div class="form-group">
+        <label>Description: </label>
+        <label>{{ct.description}}</label>
+        </div>
+      
+      
+          <button class="btn btn-success" (click)="Onewcate()">Ajouter</button>
+      </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>

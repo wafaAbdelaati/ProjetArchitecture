@@ -1,0 +1,37 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/modc.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+
+<div class="container">
+    <div class="panel panel-default">
+   
+    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+        <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+    
+            Edition des Catégories		
+    </h1></div>
+    <div class="panel-body" *ngIf="mcat">
+    
+    
+      <form #f="ngForm" (ngSubmit)="updatecat(f.value)">
+        <div class="form-group">
+        <label class="control-label text-danger">Type</label>
+        <input class="form-control" type="text" name="type" ngModel [(ngModel)]="mcat.type">
+        </div>
+        <div class="form-group">
+          <label class="control-label text-danger">Description</label>
+          <input class="form-control" type="text" name="description" ngModel [(ngModel)]="mcat.description">
+          </div> 
+           
+
+          
+            <button class="btn btn-success" type="submit">Enregistrer</button>
+        </form>
+    </div>
+    
+    </div>
+    
+    
+    </div>
+

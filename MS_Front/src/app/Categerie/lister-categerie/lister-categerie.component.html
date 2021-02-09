@@ -1,0 +1,79 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/bib.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+  
+  <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+      <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+  
+  Liste des Catégories		
+  </h1></div>
+  <div class="btn btn-outline-warning btn-sm mb-2">
+    <a class="btn btn-primary" (click)="ajoutercate()">Ajouter </a>
+  
+  </div>
+  
+  
+  <div class="panel-body">
+  <table *ngIf="cat" class="table table-striped table-condensed table-hover">
+      <thead>
+              <tr>
+              
+                  <th>&nbsp;<a ng-click="sort_by('type')"><i class="icon-sort"></i></a></th>
+                  <th>&nbsp;<a ng-click="sort_by('description')"><i class="icon-sort"></i></a></th>
+                
+              
+          </thead>
+   
+     <tbody>
+                               
+       <tr *ngFor="let c of cat" >
+          <div class="col-md-9">
+            
+              <ul class="mu-menu-item-nav" >
+               
+                <li>
+                    
+                  <div class="media">
+                    <div class="media-left">
+           
+          </div>
+                    <div class="media-body">
+                      <h2 class="media-heading text-primary">{{c.type}}</h2>
+                     
+  
+                      <span class="mu-menu-price text-dark">{{c.description}}</span>
+  
+  
+                  
+          
+      
+    
+  
+  
+  
+  
+                    </div>
+  
+                  </div>
+                </li>
+                 
+                 
+               
+                
+              </ul>   
+            </div>
+            <td> <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteC(c._id)"><i class="fa fa-trash"></i></a></td>
+            <td> <a class="btn btn-sm btn-success text-white ml-3" (click)="oncosult()"> <i class="fa fa-eye" aria-hidden="true"></i></a></td>
+            <td> <a class="btn btn-sm btn-primary text-white ml-1" (click)="oneditCat(c._id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+  </tr>
+  
+  
+          </tbody>
+    
+        
+      </table>
+  
+  </div>
+  </div>
+  </div>

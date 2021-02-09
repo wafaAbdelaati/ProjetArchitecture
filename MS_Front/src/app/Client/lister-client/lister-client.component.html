@@ -1,0 +1,79 @@
+<div>
+    <img class="banner d-none d-sm-block" src="assets/img/bib.jpg">
+   
+    <div class="banner-text d-none d-sm-block animate-box " data-animate-effect="fadeInLeft">
+  
+  <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+      <h1 class="block-title text-center" class="p-3 mb-2 bg-secondary text-white">
+  
+  Liste des clients		
+  </h1></div>
+ 
+  
+  
+  <div class="panel-body">
+  <table *ngIf="client" class="table table-striped table-condensed table-hover">
+      <thead>
+              <tr>
+              
+                  <th>&nbsp;<a ng-click="sort_by('Nom')"><i class="icon-sort"></i></a></th>
+                  <th>&nbsp;<a ng-click="sort_by('Prenom')"><i class="icon-sort"></i></a></th>
+                  <th>&nbsp;<a ng-click="sort_by('Adresse')"><i class="icon-sort"></i></a></th>
+                  <th>&nbsp;<a ng-click="sort_by('Tel')"><i class="icon-sort"></i></a></th>
+              
+          </thead>
+   
+     <tbody>
+                               
+       <tr *ngFor="let c of client" >
+          <div class="col-md-9">
+            
+              <ul class="mu-menu-item-nav" >
+               
+                <li>
+                    
+                  <div class="media">
+                    <div class="media-left">
+           
+          </div>
+                    <div class="media-body">
+                      <h2 class="media-heading text-primary">Nom:{{c.Nom}}</h2>
+                      <h3 class="media-heading text-dark">Prenom:{{c.Prenom}}</h3>
+                      <h4 class="media-heading text-dark">Adresse:{{c.Adresse}}</h4>
+  
+                      <span class="mu-menu-price text-success">Tel:{{c.Tel}}</span>
+  
+  
+                  
+          
+      
+    
+  
+  
+  
+  
+                    </div>
+  
+                  </div>
+                </li>
+                 
+                 
+               
+                
+              </ul>   
+            </div>
+          
+            <td> <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteC(c.Id)"><i class="fa fa-trash"></i></a></td>
+            <td> <a class="btn btn-sm btn-primary text-white ml-1" (click)="oneditC(c.Id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          
+  </tr>
+  
+  
+          </tbody>
+    
+        
+      </table>
+  
+  </div>
+  </div>
+  </div>
